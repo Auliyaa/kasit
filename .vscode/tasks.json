@@ -1,0 +1,50 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "build (debug)",
+			"command": "make",
+			"args": [
+				"-j16",
+				"install"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}/build.debug"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": "build"
+		},
+		{
+			"label": "build (release)",
+			"command": "make",
+			"args": [
+				"-j16",
+				"install"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}/build.release"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},
+		{
+			"label": "tests",
+			"command": "${workspaceFolder}/build.debug/libsuura/tests/suura-tests",
+			"args": [],
+			"options": {
+				"cwd": "${workspaceFolder}/build.debug"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": "test"
+		}
+	]
+}

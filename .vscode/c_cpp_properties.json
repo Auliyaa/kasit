@@ -1,0 +1,18 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+            ],
+            "defines": [
+                "SUURA_WITH_SIMD"
+            ],
+            "cStandard": "c17",
+            "cppStandard": "c++23",
+            "intelliSenseMode": "linux-gcc-x64",
+            "compilerPath": "${default}",
+            "compileCommands": "${workspaceFolder}/build.debug/compile_commands.json"
+        }
+    ],
+    "version": 4
+}
