@@ -12,7 +12,10 @@ include(cmake/helpers.cmake)
 
 cmake_setup_default_project()
 
-add_executable(test main.cpp)
-install(TARGETS test DESTINATION ${CMAKE_INSTALL_BINDIR} EXPORT ${PROJECT_NAME}-exports)
+add_subdirectory(libkasit)
+
+add_executable(meh main.cpp)
+target_link_libraries(meh PRIVATE kasit)
+install(TARGETS meh DESTINATION ${CMAKE_INSTALL_BINDIR})
 
 cmake_setup_default_export(NAMESPACE kasit)

@@ -29,22 +29,7 @@
 			"problemMatcher": [
 				"$gcc"
 			],
-			"group": {
-				"kind": "build",
-				"isDefault": true
-			}
-		},
-		{
-			"label": "tests",
-			"command": "${workspaceFolder}/build.debug/libsuura/tests/suura-tests",
-			"args": [],
-			"options": {
-				"cwd": "${workspaceFolder}/build.debug"
-			},
-			"problemMatcher": [
-				"$gcc"
-			],
-			"group": "test"
+			"group": "build"
 		}
 	]
 }

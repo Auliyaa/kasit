@@ -3,6 +3,7 @@
         {
             "name": "Linux",
             "includePath": [
+                "${workspaceFolder}/libkasit/include"
             ],
             "defines": [
                 "SUURA_WITH_SIMD"

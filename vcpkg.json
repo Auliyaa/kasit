@@ -2,6 +2,9 @@
   "name": "kasit",
   "version": "1.0.0",
   "dependencies": [
+    { "name": "crow" },
+    { "name": "nlohmann-json" },
+    { "name": "restclient-cpp" }
   ],
   "overrides": []
 }
