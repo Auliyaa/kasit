@@ -1,8 +1,6 @@
 #pragma once
 
-#include <string>
-#include <cstdint>
-#include <memory>
+#include <kasit/kasit.h>
 
 namespace kasit
 {
@@ -20,6 +18,7 @@ public:
   uint64_t id() const;
 
   void login();
+  void games() const;
 
 private:
   std::unique_ptr<steam_clt_p> _p;

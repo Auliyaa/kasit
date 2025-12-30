@@ -9,6 +9,8 @@ find_package(restclient-cpp CONFIG REQUIRED)
 # libkasit
 #
 add_library(kasit
+  src/game.cpp
+  src/kasit.cpp
   src/steam_client.cpp
 )
 

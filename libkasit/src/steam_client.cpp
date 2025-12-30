@@ -1,7 +1,8 @@
 #include <kasit/steam_client.h>
 
 #include <crow.h>
-#include <iostream>
+
+#include <restclient-cpp/restclient.h>
 
 #include <regex>
 #include <numeric>
@@ -27,7 +28,6 @@ struct steam_clt_p
 #else
     login_cmd << "/usr/bin/xdg-open";
 #endif
-
     login_cmd << " "
               << "\'"
               << "https://steamcommunity.com/openid/login?"
@@ -48,7 +48,7 @@ struct steam_clt_p
 
   static uint64_t extract_steam_id(const std::string& claimed_id_url)
   {
-    std::regex re(R"(https://steamcommunity\.com/openid/id/(\d+))");
+    static const std::regex re(R"(https://steamcommunity\.com/openid/id/(\d+))");
     std::smatch match;
     if (!std::regex_match(claimed_id_url, match, re)) return std::numeric_limits<uint64_t>::max();
     return std::stoull(match[1]);
@@ -130,4 +130,16 @@ void steam_clt_t::login()
   {
     // TODO: handle error
   }
+}
+
+void steam_clt_t::games() const
+{
+  const std::string url =
+    "https://api.steampowered.com/IPlayerService/GetOwnedGames/v1/"
+    "?key=" + _p->api_key +
+    "&steamid=" + std::to_string(_p->id) +
+    "&include_appinfo=true";
+
+  const auto rsp = RestClient::get(url);
+  std::cout << rsp.body << std::endl;
 }
