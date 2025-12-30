@@ -4,6 +4,8 @@
 
 #include <restclient-cpp/restclient.h>
 
+#include <nlohmann/json.hpp>
+
 #include <regex>
 #include <numeric>
 
@@ -132,7 +134,7 @@ void steam_clt_t::login()
   }
 }
 
-void steam_clt_t::games() const
+std::list<game_t> steam_clt_t::games() const
 {
   const std::string url =
     "https://api.steampowered.com/IPlayerService/GetOwnedGames/v1/"
@@ -141,5 +143,16 @@ void steam_clt_t::games() const
     "&include_appinfo=true";
 
   const auto rsp = RestClient::get(url);
-  std::cout << rsp.body << std::endl;
+  if (rsp.code != 200)
+  {
+    throw std::runtime_error{"failed to fetch owned games from steam api: " + rsp.body};
+  }
+  const auto d = nlohmann::json::parse(rsp.body);
+
+  std::list<game_t> res;
+  for (const auto& entry : d["response"]["games"])
+  {
+    res.emplace_back(game_t::from_steam_api(entry));
+  }
+  return res;
 }

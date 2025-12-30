@@ -1,6 +1,8 @@
 #pragma once
 
-#include <kasit/kasit.h>
+#include <kasit/game.h>
+
+#include <list>
 
 namespace kasit
 {
@@ -18,7 +20,7 @@ public:
   uint64_t id() const;
 
   void login();
-  void games() const;
+  std::list<game_t> games() const;
 
 private:
   std::unique_ptr<steam_clt_p> _p;
