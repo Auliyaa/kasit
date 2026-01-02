@@ -4,6 +4,7 @@
 find_package(Crow CONFIG REQUIRED)
 find_package(nlohmann_json CONFIG REQUIRED)
 find_package(restclient-cpp CONFIG REQUIRED)
+find_path(INIPP_INCLUDE_DIRS "inipp.h")
 
 #
 # libkasit
@@ -11,12 +12,16 @@ find_package(restclient-cpp CONFIG REQUIRED)
 add_library(kasit
   src/game.cpp
   src/kasit.cpp
+  src/settings.cpp
   src/steam_client.cpp
 )
 
-target_include_directories(kasit PUBLIC
+target_include_directories(kasit
+PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>
+PRIVATE
+  ${INIPP_INCLUDE_DIRS}
 )
 
 target_link_libraries(kasit

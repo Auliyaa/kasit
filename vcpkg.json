@@ -4,7 +4,9 @@
   "dependencies": [
     { "name": "crow" },
     { "name": "nlohmann-json" },
-    { "name": "restclient-cpp" }
+    { "name": "restclient-cpp" },
+    { "name": "inipp" }
+
   ],
   "overrides": []
 }
