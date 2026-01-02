@@ -1,0 +1,1 @@
+// https://api-docs.igdb.com/#authentication

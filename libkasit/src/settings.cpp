@@ -46,8 +46,17 @@ void settings_t::close()
   _p->ini = decltype(_p->ini){};
 }
 
-std::string settings_t::api_steam() const
+std::string settings_t::steam_api_key() const
 {
-  return _p->get<std::string>("api", "steam");
+  return _p->get<std::string>("steam", "api_key");
 }
 
+std::string settings_t::igdb_id() const
+{
+  return _p->get<std::string>("igdb", "id");
+}
+
+std::string settings_t::igdb_secret() const
+{
+  return _p->get<std::string>("igdb", "secret");
+}

@@ -16,7 +16,10 @@ public:
   bool open(const std::string&);
   void close();
 
-  std::string api_steam() const;
+  std::string steam_api_key() const;
+
+  std::string igdb_id() const;
+  std::string igdb_secret() const;
 
 private:
   std::unique_ptr<settings_p> _p;
