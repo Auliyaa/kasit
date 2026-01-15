@@ -11,6 +11,7 @@ find_path(INIPP_INCLUDE_DIRS "inipp.h")
 #
 add_library(kasit
   src/game.cpp
+  src/igdb_client.cpp
   src/kasit.cpp
   src/settings.cpp
   src/steam_client.cpp
