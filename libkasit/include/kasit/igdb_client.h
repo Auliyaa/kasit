@@ -16,7 +16,8 @@ public:
   void login(const std::string& client_id, const std::string& client_secret);
   bool connected() const;
 
-  virtual void fill(game_t&) const override;
+  virtual bool fill(game_t&) const override;
+  virtual std::string last_error() const override;
 
 private:
   std::unique_ptr<igdb_clt_p> _p;

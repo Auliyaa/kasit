@@ -15,6 +15,8 @@ int main(int argc, char** argv)
   kasit::game_t g;
   g.set_name("Path of Exile 2");
   igdb.fill(g);
+  igdb.fill(g);
+  igdb.fill(g);
 
   return 0;
 }
